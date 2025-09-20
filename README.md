@@ -1,6 +1,13 @@
 # react-native-fast-debugger
 
-Support for debugger
+Support for debugger:
+🚀 Easy plug & play with axios
+
+📡 Logs all requests & responses
+
+🎨 Optional theming
+
+🧹 Auto-clears old logs (with maxRequests)
 
 ## Installation
 
@@ -12,13 +19,31 @@ npm install react-native-fast-debugger
 
 ## Usage
 
-
+1. Create an axios instance
 ```js
-import { multiply } from 'react-native-fast-debugger';
 
-// ...
+import React from "react";
+import { StyleSheet, Text } from "react-native";
+import { NetworkLoggerProvider } from "react-native-fast-debugger";
+import axios from "axios";
 
-const result = await multiply(3, 7);
+const axiosInstance = axios.create({});
+
+export default function App() {
+  return (
+    <NetworkLoggerProvider axiosInstance={axiosInstance}>
+      <Text>Result</Text>
+    </NetworkLoggerProvider>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
 ```
 
 

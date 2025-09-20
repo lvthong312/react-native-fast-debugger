@@ -1,6 +1,6 @@
 {
   "name": "react-native-fast-debugger",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Support for debugger",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -84,7 +84,8 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-lite-modal": "*"
   },
   "workspaces": [
     "example"
