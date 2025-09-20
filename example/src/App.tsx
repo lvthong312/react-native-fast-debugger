@@ -5,7 +5,10 @@ import { NetworkLoggerProvider } from 'react-native-fast-debugger';
 const axiosInstance = axios.create({});
 export default function App() {
   return (
-    <NetworkLoggerProvider axiosInstance={axiosInstance}>
+    <NetworkLoggerProvider
+      axiosInstance={axiosInstance}
+      enableNetworkDebugger={__DEV__}
+    >
       <Text>Result</Text>
     </NetworkLoggerProvider>
   );

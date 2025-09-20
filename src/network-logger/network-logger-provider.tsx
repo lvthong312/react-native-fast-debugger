@@ -9,8 +9,13 @@ interface NetworkLoggerContextProps {
   logEntity: NetworkLogListEntity;
   setLogEntity?: (logEntity: NetworkLogListEntity) => void;
 }
+interface NetworkLoggerProviderProps {
+  axiosInstance: any;
+  enableNetworkDebugger: boolean;
+  children?: any;
+}
 const withModalProvider = (Component: any) => {
-  return (props: any) => (
+  return (props: NetworkLoggerProviderProps) => (
     <ModalProvider>
       <Component {...props} />
     </ModalProvider>
@@ -20,11 +25,7 @@ const withModalProvider = (Component: any) => {
 const NetworkLoggerContext = createContext<NetworkLoggerContextProps>({
   logEntity: new NetworkLogListEntity([]),
 });
-interface NetworkLoggerProviderProps {
-  axiosInstance: any;
-  enableNetworkDebugger: boolean;
-  children: any;
-}
+
 // Chỉ bật ở DEV, staging hoặc development
 export const NetworkLoggerProvider = withModalProvider(
   ({
