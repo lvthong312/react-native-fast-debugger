@@ -11,13 +11,20 @@ import {
   View,
 } from 'react-native';
 import { NetworkLogEntity } from './entities/network-log-entity';
+import type { NetworkLogListEntity } from './entities/network-log-list-entity';
 
 export type NetworkDebuggerRef = {
   open: () => void;
   close: () => void;
 };
 
-const NetworkDebuggerModal = ({ logEntity, setLogEntity }: any) => {
+const NetworkDebuggerModal = ({
+  logEntity,
+  setLogEntity,
+}: {
+  logEntity: NetworkLogListEntity;
+  setLogEntity: (logEntity: NetworkLogListEntity) => void;
+}) => {
   const [selectedLog, setSelectedLog] = useState<NetworkLogEntity | null>(null);
   const [filterStatus, setFilterStatus] = useState<
     'all' | 'pending' | 'success' | 'failed'
