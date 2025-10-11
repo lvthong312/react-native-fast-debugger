@@ -33,7 +33,7 @@ export const NetworkLoggerProvider = withModalProvider(
     axiosInstance,
     enableNetworkDebugger = __DEV__,
   }: NetworkLoggerProviderProps) => {
-    if (!enableNetworkDebugger) return;
+    if (!enableNetworkDebugger) return children;
     const [logEntity, setLogEntity] = useState(new NetworkLogListEntity([]));
     const { openModal } = useModal();
     useEffect(() => {

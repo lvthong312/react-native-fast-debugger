@@ -1,5 +1,11 @@
 # react-native-fast-debugger
 
+<p align="center">
+  <img src="https://img.shields.io/npm/v/react-native-fast-debugger?color=green" alt="npm version" />
+  <img src="https://img.shields.io/npm/dm/react-native-fast-debugger" alt="npm downloads" />
+  <img src="https://img.shields.io/badge/react--native-0.70+-blue" alt="react-native" />
+</p>
+
 Support for debugger:
 🚀 Easy plug & play with axios
 
