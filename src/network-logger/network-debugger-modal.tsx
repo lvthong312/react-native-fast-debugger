@@ -11,7 +11,7 @@ import {
   View,
 } from 'react-native';
 import { NetworkLogEntity } from './entities/network-log-entity';
-import type { NetworkLogListEntity } from './entities/network-log-list-entity';
+import { NetworkLogListEntity } from './entities/network-log-list-entity';
 
 export type NetworkDebuggerRef = {
   open: () => void;
@@ -77,7 +77,7 @@ const NetworkDebuggerModal = ({
             <TouchableOpacity
               onPress={() => {
                 logEntity.clear();
-                setLogEntity?.(logEntity);
+                setLogEntity?.(new NetworkLogListEntity([]));
               }}
               style={styles.clearBtn}
             >
@@ -89,7 +89,6 @@ const NetworkDebuggerModal = ({
           </Text>
         </View>
 
-        {/* FILTER BUTTONS */}
         {!selectedLog && (
           <View style={styles.filterRow}>
             {(['all', 'pending', 'success', 'failed'] as const).map(
@@ -134,15 +133,24 @@ const NetworkDebuggerModal = ({
                 ? selectedLog.endTime - selectedLog.startTime + ' ms'
                 : '...'}
             </Text>
+            {selectedLog.params && (
+              <>
+                <Text style={styles.sectionLabel}>Request Params</Text>
+                <Text style={styles.jsonBlock}>
+                  {JSON.stringify(selectedLog.params, null, 2)}
+                </Text>
+              </>
+            )}
 
             {selectedLog.requestData && (
               <>
-                <Text style={styles.sectionLabel}>Request</Text>
+                <Text style={styles.sectionLabel}>Request Data</Text>
                 <Text style={styles.jsonBlock}>
                   {JSON.stringify(selectedLog.requestData, null, 2)}
                 </Text>
               </>
             )}
+
             {selectedLog.responseData && (
               <>
                 <Text style={styles.sectionLabel}>Response</Text>

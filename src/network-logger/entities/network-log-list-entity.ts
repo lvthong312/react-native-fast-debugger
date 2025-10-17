@@ -1,4 +1,4 @@
-import { NetworkLogEntity } from "./network-log-entity";
+import { type NetworkLogEntity } from "./network-log-entity";
 
 export class NetworkLogListEntity {
     public logs: NetworkLogEntity[] = []
